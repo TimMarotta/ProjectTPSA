@@ -1,0 +1,4 @@
+# The following file contains web links consulted in the creation of TPSA
+
+https://stackabuse.com/accessing-the-twitter-api-with-python/
+https://twython.readthedocs.io/en/latest/usage/starting_out.html#oauth2
