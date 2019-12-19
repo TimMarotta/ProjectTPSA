@@ -1,0 +1,17 @@
+# count = 0
+        # for tweet in tweepy.Cursor(self.api.search, q=q, since='2019-12-15',
+        #                            until='2019-12-16').items(200):
+        #     count += 1
+        #     print(tweet.text)
+        #     print(tweet.created_at)
+        #     print(tweet.coordinates)
+        #     print("\n")
+        # print(count)
+        # trial = self.api.search(q=q, lang='en', since='2019-12-15', until='2019-12-16')
+        # trial_json = trial[0]
+        # json_str = json.dumps(trial_json._json)
+        # parsed = json.loads(json_str)
+        # return json.dumps(parsed, sort_keys=True)
+
+# with open('output/' + name.replace(' ', '_').lower() + '.txt', 'a') as outfile:
+        #     json.dump(json_catch, outfile)
