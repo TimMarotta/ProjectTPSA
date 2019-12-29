@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Line Chart</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+<div style="width:100%;">
+    <canvas id="canvas"></canvas>
+</div>
+<script src="js_abstract/amy_klobuchar.js"></script>
+<script src="js_abstract/andrew_yang.js"></script>
+<script src="js_abstract/bernie_sanders.js"></script>
+<script src="js_abstract/democrat.js"></script>
+<script src="js_abstract/donald_trump.js"></script>
+<script src="js_abstract/elizabeth_warren.js"></script>
+<script src="js_abstract/joe_biden.js"></script>
+<script src="js_abstract/pete_buttigieg.js"></script>
+<script src="js_abstract/republican.js"></script>
+<script src="js_abstract/tom_steyer.js"></script>
+<script>
+    var timeFormat = 'YYYY-MM-DD hh:mm:ss';
+
+    var config = {
+        type:    'line',
+        data:    {
+            datasets: [
+                {
+                    label: "Andrew Yang",
+                    data: andrew_yang,
+                    fill: false,
+                    borderColor: '#4C6085'
+                },
+                {
+                    label: "Amy Klobuchar",
+                    data:  amy_klobuchar,
+                    fill:  false,
+                    borderColor: '#39A0ED'
+                },
+                {
+                    label: "Bernie Sanders",
+                    data: bernie_sanders,
+                    fill: false,
+                    borderColor: '#36F1CD'
+                },
+                { 
+                    data: elizabeth_warren, 
+                    label: 'Elizabeth Warren',
+                    fill: false,
+                    borderColor: "#13C4A3"
+                },
+                { 
+                    data: joe_biden, 
+                    label: 'Joe Biden',
+                    fill: false,
+                    borderColor: "#32322C"
+                },
+                { 
+                    data: pete_buttigieg, 
+                    label: 'Pete Buttigieg',
+                    fill: false,
+                    borderColor: "#C9C600"
+                },
+                { 
+                    data: tom_steyer, 
+                    label: 'Tom Steyer',
+                    fill: false,
+                    borderColor: "#FF9B71"
+                },
+                { 
+                    data: donald_trump, 
+                    label: 'Donald Trump',
+                    fill: false,
+                    borderColor: "#B56B45"
+                },
+                { 
+                    data: democrat, 
+                    label: 'Democrat',
+                    fill: false,
+                    borderColor: "#E84855"
+                },
+                { 
+                    data: republican, 
+                    label: 'Republican',
+                    fill: false,
+                    borderColor: "#2B3A67"
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            title:      {
+                display: true,
+                text:    "Averaged Samples Across Time (UTC)"
+            },
+            scales:     {
+                xAxes: [{
+                    type:       "time",
+                    time:       {
+                        format: timeFormat,
+                        tooltipFormat: 'll'
+                    },
+                    scaleLabel: {
+                        display:     true,
+                        labelString: 'Date'
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display:     true,
+                        labelString: 'Sentiment'
+                    }
+                }]
+            }
+        }
+    };
+
+    window.onload = function () {
+        var ctx       = document.getElementById("canvas").getContext("2d");
+        window.myLine = new Chart(ctx, config);
+    };
+
+</script>
+
+</body>
+
+</html>

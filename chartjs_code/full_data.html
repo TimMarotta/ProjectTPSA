@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Line Chart</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+<div style="width:100%;">
+    <canvas id="canvas"></canvas>
+</div>
+<script src="js/amy_klobuchar.js"></script>
+<script src="js/andrew_yang.js"></script>
+<script src="js/bernie_sanders.js"></script>
+<script src="js/democrat.js"></script>
+<script src ="js/donald_trump.js"></script>
+<script src="js/elizabeth_warren.js"></script>
+<script src="js/joe_biden.js"></script>
+<script src="js/pete_buttigieg.js"></script>
+<script src="js/republican.js"></script>
+<script src="js/tom_steyer.js"></script>
+<script>
+    var timeFormat = 'YYYY-MM-DD hh:mm:ss';
+
+    var config = {
+        type:    'line',
+        data:    {
+            datasets: [
+                {
+                    label: "Andrew Yang",
+                    data: andrew_yang,
+                    fill: false,
+                    borderColor: 'red'
+                },
+                {
+                    label: "Amy Klobuchar",
+                    data:  amy_klobuchar,
+                    fill:  false,
+                    borderColor: 'blue'
+                },
+                {
+                    label: "Bernie Sanders",
+                    data: bernie_sanders,
+                    fill: false,
+                    borderColor: 'green'
+                },
+                { 
+                    data: elizabeth_warren.jsonarray, 
+                    label: 'Elizabeth Warren',
+                    borderColor: "#3e95cd"
+                },
+                { 
+                    data: joe_biden.jsonarray, 
+                    label: 'Joe Biden',
+                    borderColor: "#3e95cd"
+                },
+                { 
+                    data: pete_buttigieg.jsonarray, 
+                    label: 'Pete Buttigieg',
+                    borderColor: "#3e95cd"
+                },
+                { 
+                    data: tom_steyer.jsonarray, 
+                    label: 'Tom Steyer',
+                    borderColor: "#3e95cd"
+                },
+                { 
+                    data: donald_trump, 
+                    label: 'Donald Trump',
+                    borderColor: "#3e95cd"
+                },
+                { 
+                    data: democrat, 
+                    label: 'Democrat',
+                    borderColor: "#3e95cd"
+                },
+                { 
+                    data: republican.jsonarray, 
+                    label: 'Republican',
+                    borderColor: "#3e95cd"
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            title:      {
+                display: true,
+                text:    "Chart.js Time Scale"
+            },
+            scales:     {
+                xAxes: [{
+                    type:       "time",
+                    time:       {
+                        format: timeFormat,
+                        tooltipFormat: 'll'
+                    },
+                    scaleLabel: {
+                        display:     true,
+                        labelString: 'Date'
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display:     true,
+                        labelString: 'value'
+                    }
+                }]
+            }
+        }
+    };
+
+    window.onload = function () {
+        var ctx       = document.getElementById("canvas").getContext("2d");
+        window.myLine = new Chart(ctx, config);
+    };
+
+</script>
+
+</body>
+
+</html>
